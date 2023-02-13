@@ -5,7 +5,7 @@ const port = 3001;
 
 app.use(cors());
 
-const highwayCoords_trash = [
+const differentCityCoords = [
   [12.9716, 77.5946],
   [12.8716, 77.4946],
   [12.7716, 77.3946],
@@ -50,7 +50,8 @@ app.get('/stream', (req, res) => {
   let i = 0;
   setInterval(() => {
     const [latitude, longitude] = highwayCoords[i % highwayCoords.length];
-    res.write(`data: ${JSON.stringify({ latitude, longitude })}\n\n`);
+    const [latitude1, longitude1] = differentCityCoords[i % differentCityCoords.length];
+    res.write(`data: ${JSON.stringify({ latitude, longitude, latitude1, longitude1 })}\n\n`);
     i++;
   }, 3000);
 });
