@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet'
 // import { Polyline } from 'react-leaflet/Polyline'
 import './App.css';
 import 'leaflet/dist/leaflet.css';
+import GoogleLayer from "react-leaflet-google-layer";
 
 const defaultCenter = [12.910992237810687, 77.63791637508609];
 const defaultZoom = 14;
@@ -64,8 +65,10 @@ function App() {
     return (
         <div className="App">
             <MapContainer ref={mapRef} center={location} zoom={defaultZoom}>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <GoogleLayer />
 
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a> contributors" />
+//                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a> contributors" />
 
                 <Marker position={location} draggable={true} keyboard={true}>
                     <Popup keepInView={true}>
